@@ -38,14 +38,38 @@ def draw_line():
     color=(x,y,z)
     pygame.draw.line(game_display, color, (width_start,height_start), (width_end,height_end), random_length )
 
+def draw_circle():
+    x=random.randint(0,255)
+    y=random.randint(0,255)
+    z=random.randint(0,255)
+
+    width_start=random.randint(1,width)
+    height_start=random.randint(1,height)
+
+    width_end=random.randint(1,400)
+    height_end=random.randint(1,400)
+    
+    random_length=random.randint(1,10)
+    color=(x,y,z)
+    
+    
+    pygame.draw.circle(game_display, color, (width_start, height_start), (width_end,height_end), random_length)
+
+
+
 black=(0,0,0)
 i=0
 game_display.fill(black)
     
 while True:
- 
+    #made so the computer alters between a circle and line
+    type_set=random.randint(1,2)
+    
     if i%10==0:
-        draw_line()
+        if type_set==1:
+            draw_line()
+        elif type_set==2:
+            draw_circle()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
